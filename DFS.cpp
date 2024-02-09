@@ -7,7 +7,7 @@ vector<int>visited(30000,0);
 void DFS(int node)
 {
    visited[node]=1;
-   cout <<node << " ";
+   cout <<node << " ";//printing visited node
    
    for(int i:adj_list[node])
    {
