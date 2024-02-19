@@ -2,15 +2,15 @@
 using namespace std;
 
 #define v 9
-int parent[100];
-vector<bool>processed(100,false);
-vector<int>value(100,INT_MAX);
+int parent[1000];
+vector<bool>processed(1000,false);
+vector<int>value(1000,INT_MAX);
 
 int minvertex()
 {
     int vertex,mn=INT_MAX;
     
-    for(int i=0; i<100; i++)
+    for(int i=0; i<1000; i++)
     {
         if(processed[i]==false && value[i]<mn)
         {
