@@ -38,6 +38,28 @@ int SumQuery(int a[],int node,int st,int en,int l,int r)
      return q1+q2;
 }
 
+void Update(int a[],int node,int st,int en,int pos, int newval)
+{
+    if(st == en)
+    {
+        tree[node] = newval;
+        return;
+    }
+
+    int mid = (st+en)/2;
+
+    if(pos<=mid)
+    {
+        Update(a, 2*node, st, mid, pos, newval);
+    }
+    else
+    {
+        Update(a, 2*node+1 ,mid+1 ,en,pos,newval );
+    }
+
+    tree[node] = tree[2*node] + tree[2*node+1];
+}
+
 int main()
 {
     int n,q;
@@ -62,11 +84,17 @@ int main()
 
     while(q--)
     {
-        int l,r;
-        cin >> l >> r;
+       int pos,val;
+       cin >> pos >>val;
 
-       int QueryAns = SumQuery(a,1,0,n-1,l,r);
-        cout << QueryAns << "\n";
+       Update(a,1,0,n-1,pos,val);//update query
+
+       int l,r;
+       cin >> l >> r;
+
+       int QueryAns = SumQuery(a,1,0,n-1,l,r);//sumquery after update value
+       cout << QueryAns << "\n";
+
     }
     return 0;
 }
