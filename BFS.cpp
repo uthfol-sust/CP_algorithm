@@ -35,7 +35,7 @@ void BFS(int node)
 int main()
 {
    int n,m;
-   cout << "Enter the number of vertices & Edage : ";
+   //cout << "Enter the number of vertices & Edage : ";
    cin >> n >> m;
 
    while(m--)
