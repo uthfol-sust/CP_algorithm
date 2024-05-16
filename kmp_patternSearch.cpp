@@ -97,12 +97,6 @@ int main()
    KMPSearch(txt,pat);
 
    cout << endl;
-
-   if(i<cs)
-   cout << endl;
-
-
-   i++;
    }
     return 0;
 }
