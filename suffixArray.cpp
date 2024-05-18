@@ -17,12 +17,7 @@ const int N=1e5+2;
 
 void solve()
 {
- double a[3];
-       for(ll i=0;i<3;i++)cin>>a[i];
-       sort(a,a+3);
-       
-       cout<<180-(((asin(a[0])*180)/acos(-1.0))+((asin(a[1])*180)/acos(-1.0)))<<endl;
-  
+     
 }
 
 int main()
