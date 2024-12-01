@@ -11,28 +11,17 @@ using namespace std;
 
 vector<int> calculateLPSarry(string pat,int m)
 {
-   vector<int>lps(m);
-   int i=1,len=0;
-   lps[0]=0;
+   vector<int>lps(m,0);
+   for(int i=1; i<n; i++){
+      int j = lps[i-1];
 
-   while(i<m)
-   {
-      if(pat[i]==pat[len])
-      {
-        lps[i]=len+1;
-        i +=1;
-        len +=1;
-      }
-      else
-      {
-         if(len != 0)
-         len = lps[len -1];
-         else
-         {
-            lps[i]=0;
-            i+=1;
-         }
-      }
+      while(j>0 && pat[i]!=pat[j])
+       j = lps[i-1];
+
+      if(pat[i]==pat) 
+      j++;
+
+      pi[i] = j;
    }
 
    return lps;
