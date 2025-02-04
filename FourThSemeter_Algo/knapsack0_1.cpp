@@ -13,43 +13,31 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int N = 1e5 + 2;
 
-vector<int> wt, pt, dp;
+int knapSack(int W, vector<int>& wt, vector<int>& val) {
+    int n = wt.size();
+    vector<vector<int>> dp(n + 1, vector<int>(W + 1));
 
-int knapSack(int W) {
-    dp.resize(W + 1, 0);
-
-    for (int i = 1; i <= wt.size(); i++) {
-        for (int w = W; w >= 0; w--) {
-            if (wt[i - 1] <= w) {
-                dp[w] = max(dp[w], dp[w - wt[i - 1]] + pt[i - 1]);
-            }
+   
+    for (int i = 0; i <= n; i++) {
+        for (int w = 0; w <= W; w++) {
+            if (i == 0 || w == 0)
+                dp[i][w] = 0;
+            else if (wt[i - 1] <= w)
+                dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], 
+                               dp[i - 1][w]);
+            else
+                dp[i][w] = dp[i - 1][w];
         }
     }
-    return dp[W];
-}
-
-void solve() {
-    int n, w;
-    cin >> n >> w;
-
-    wt.resize(n);
-    pt.resize(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> wt[i] >> pt[i];
-    }
-
-    int ans = knapSack(w);
-    cout << ans << endl;
+    return dp[n][W];
 }
 
 signed main() {
-    faster_code();
+    vector<int> profit = {60, 100, 120};
+    vector<int> weight = {10, 20, 30};
+    int W = 50;
 
-    int tt;
-    cin >> tt;
-    while (tt--) {
-    solve();
-    }
+    cout << knapSack(W, weight, profit) << endl;
+
     return 0;
 }
