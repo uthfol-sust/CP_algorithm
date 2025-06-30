@@ -33,7 +33,7 @@ int main()
      adj_list[b].push_back(a);//both are used when graph is undirected
    }
    
-   int start=1;//starting 1
+   int start=1;//starting from 1
    DFS(start);
 
 }

@@ -39,15 +39,9 @@ void printJobScheduling(Job arr[], int n)
             slot_available = arr[i].dead - arr[i - 1].dead;
         }
 
-        if (arr[i].dead == arr[i - 1].dead)
-        {
-            if (arr[i].profit > arr[i - 1].profit)
-                pq.push(arr[i]);
-        }
-        else
-        {
-            pq.push(arr[i]);
-        }
+    
+        pq.push(arr[i]);
+        
 
         while (slot_available > 0 && pq.size() > 0)
         {
